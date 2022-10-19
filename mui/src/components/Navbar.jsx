@@ -27,7 +27,7 @@ const UserBox = styled(Box) (({theme}) => ({
     alignItems: 'center',
     gap: '10px',
     [theme.breakpoints.up('sm')]:{
-        display:'no                   ne'
+        display:'none'
     }
 }))
 
@@ -36,7 +36,9 @@ const Navbar = () => {
     return (
         <AppBar position="sticky">
             <StyledToolbar>
-                <Typography variant="h6" sx={{display:{xs:"none", sm:"block"}}}>NAVBAR</Typography>
+                <Typography variant="h6" sx={{display:{xs:"none", sm:"block"}}}>
+                    NAVBAR
+                </Typography>
                 <Pets sx={{display:{xs:"block", sm:"none"}}}/>
                 <Search><InputBase placeholder="search..."/></Search>
                 <Icons>
@@ -47,10 +49,10 @@ const Navbar = () => {
                         <Notifications/>
                     </Badge>
                     <Avatar sx={{width:30, height:30}} src=""
-                    
+                    onClick={e=>setOpen(true)}
                     />
                 </Icons>
-                <UserBox>
+                <UserBox onClick={e=>setOpen(true)}>
                 <Avatar sx={{width:30, height:30}} src=""/>
                 <Typography variant="span">John</Typography>
                 </UserBox>
@@ -58,7 +60,8 @@ const Navbar = () => {
             <Menu
                 id="demo-positioned-menu"
                 aria-labelledby='demo-positioned-button'
-                open={true}
+                open={open}
+                onClose={e=>setOpen(false)}
                 anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'right',
